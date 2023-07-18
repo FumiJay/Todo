@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Todo.MainPage">
+
+    <ScrollView>
+        <!--<VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>-->
+
+        <!--<StackLayout Margin="10">
+            <AbsoluteLayout Margin="20">
+                <BoxView Color="Silver"
+                    AbsoluteLayout.LayoutBounds="0, 0, 200, 5" />
+                <BoxView Color="Red"
+                    AbsoluteLayout.LayoutBounds="0, 60, 200, 5" />
+                <BoxView Color="Blue"
+                    AbsoluteLayout.LayoutBounds="0, 0, 5, 65" />
+                <BoxView Color="Black"
+                    AbsoluteLayout.LayoutBounds="200, 0, 5, 65" />
+
+                <Label Text="Todo App"
+                    FontSize="25"
+                    AbsoluteLayout.LayoutBounds="50, 15" />
+            </AbsoluteLayout>
+
+            <AbsoluteLayout Margin="20">
+                <BoxView Color="Blue"
+                    AbsoluteLayout.LayoutBounds="0.5,0,200,25"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+                <BoxView Color="Green"
+                    AbsoluteLayout.LayoutBounds="0,0.5,25,100"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+                <BoxView Color="Red"
+                    AbsoluteLayout.LayoutBounds="1,0.5,15,100"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+                <BoxView Color="Black"
+                    AbsoluteLayout.LayoutBounds="0.5,1,100,15"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+                <Label Text="Todo App"
+                       FontSize="15"
+                    AbsoluteLayout.LayoutBounds="0.5,0.5,110,25"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" />
+            </AbsoluteLayout>
+            
+            <Label Text="Main Page" 
+                   FontSize="50"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Todo Item Count" 
+                   FontSize="25"
+                   HorizontalOptions="Center" />
+            <Border Stroke="gray"
+                StrokeThickness="4"
+                StrokeShape="RoundRectangle 40,40,40,40"
+                HorizontalOptions="CenterAndExpand">
+                <Label Text="30"
+                       Padding="20"
+                        FontSize="18"
+                        FontAttributes="Bold" />
+            </Border>
+
+            <Label Text="Done Item Count" 
+                   FontSize="25"
+                   HorizontalOptions="Center" />
+            <Border Stroke="gray"
+                StrokeThickness="4"
+                StrokeShape="RoundRectangle 40,40,40,40"
+                HorizontalOptions="CenterAndExpand">
+                <Label Text="30"
+                       Padding="20"
+                        FontSize="18"
+                        FontAttributes="Bold" />
+            </Border>
+        </StackLayout>-->
+
+        <!--<VerticalStackLayout>
+            <Grid RowDefinitions="3*, Auto, Auto, 200"
+                  ColumnDefinitions="Auto, 2*">
+
+                <BoxView Color="Green" />
+                <Label Text="Todo Item Count" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border Grid.Column="1"
+                    Stroke="gray"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 45,45,45,45"
+                    HorizontalOptions="CenterAndExpand">
+                    <Label Text="30"
+                           Padding="20"
+                           FontSize="18"
+                           FontAttributes="Bold" />
+                </Border>
+
+                <BoxView Grid.Row="1"
+                 Color="Teal" />
+                <Label Grid.Row="1"
+                    Text="Done Item Count"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+                
+                <Border  Grid.Row="1" Grid.Column="1"
+                    Stroke="gray"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 40,40,40,40"
+                    HorizontalOptions="CenterAndExpand">
+                    <Label Text="30"
+                            Padding="20"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                </Border>
+
+                <BoxView Grid.Row="2"
+                 Color="Aqua" />
+                <Label Grid.Row="2"
+                    Text="Test Item Count"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <Border  Grid.Row="2" Grid.Column="1"
+                    Stroke="gray"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 40,40,40,40"
+                    HorizontalOptions="CenterAndExpand">
+                    <Label Text="30"
+                            Padding="20"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                </Border>
+
+                <BoxView Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Color="Red" />
+                <Label Grid.Row="3"
+                    Grid.ColumnSpan="3"
+                    Text="Row 2, Columns 0 and 1"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+            </Grid>
+            
+        </VerticalStackLayout>-->
+
+        <VerticalStackLayout>
+            <!-- 3 Row(2*, Auto, 100), 2 Col(Auto, Auto)-->
+            <!-- * 是Width預設值(1*) -->
+            <Grid RowDefinitions="2*, Auto, Auto"
+                  ColumnDefinitions="Auto, 2*"
+                  BindingContext="{x:Reference slider}">
+
+                <Label Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    FontSize="{Binding Value}"
+                    Text="Wlecome TodoPage"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <!--(1,0)-->
+                <Label Grid.Row="1"
+                    Text="Todo Item Count" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+                <!--(1,1)-->
+                <Border Grid.Row="1" Grid.Column="1"
+                    Stroke="gray"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 40,40,40,40"
+                    HorizontalOptions="CenterAndExpand">
+                    <Label Text="30"
+                           Padding="20"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                </Border>
+
+                <!--(2,0)-->
+                <Label Grid.Row="2"
+                    Text="Done Item Count"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center" />
+
+
+                <!--(2,1)-->
+                <Border  Grid.Row="2" Grid.Column="1"
+                    Stroke="gray"
+                    StrokeThickness="4"
+                    StrokeShape="RoundRectangle 40,40,40,40"
+                    HorizontalOptions="CenterAndExpand">
+                    <Label Text="30"
+                            Padding="20"
+                            FontSize="18"
+                            FontAttributes="Bold" />
+                </Border>
+
+            </Grid>
+
+            <Slider x:Name="slider"
+                Maximum="100" />
+        </VerticalStackLayout>
+
+
+    </ScrollView>
+
+</ContentPage>

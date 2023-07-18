@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Todo.UserPage"
+    Title="UserPage">
+
+    <!--<FlexLayout 
+            Direction="Column"
+            AlignItems="Stretch"
+            JustifyContent="SpaceEvenly">
+
+        <Label Text="FlexLayout in Action" FontSize="18" />
+        
+        <BoxView Color="Aqua" HeightRequest="100" />
+        <BoxView Color="MediumPurple" HeightRequest="100" />
+        <BoxView Color="Yellow" HeightRequest="100" />
+        
+        <Label Text="Another Label" />
+    </FlexLayout>-->
+
+    <!--<FlexLayout 
+            Direction="Column"
+            AlignItems="Center"
+            JustifyContent="SpaceEvenly">
+        <controls:CardView CardTitle="Hi"/>
+        <controls:CardView CardTitle='Test' />
+    </FlexLayout>-->
+
+    <VerticalStackLayout Spacing="15">
+
+        <ContentView x:Name="UserHeader">
+            <Frame Margin="15">
+                <HorizontalStackLayout Spacing="15">
+                    <Image Source="dotnet_bot.png" HeightRequest="50" HorizontalOptions="Center"/>
+                    <VerticalStackLayout>
+                        <Label Text="User: Felix" />
+                        <Label Text="Descripion: I'm Felix" />
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Frame>
+        </ContentView>
+
+        <ContentView x:Name="UserBody">
+            <Frame Margin="15">
+                <VerticalStackLayout>
+                    <Label Text="Todo Count: 0" />
+                    <Label Text="Done Count: 0" />
+                </VerticalStackLayout>
+            </Frame>
+        </ContentView>
+
+        <ContentView x:Name="Auth">
+            <Frame Margin="15">
+                <Button Text="Login" Clicked="AuthRoute" />
+            </Frame>
+        </ContentView>
+        
+    </VerticalStackLayout>
+
+</ContentPage>

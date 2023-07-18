@@ -1,0 +1,15 @@
+
+生成keystore:
+keytool -genkey -v -keystore todo.keystore -alias key -keyalg RSA -keysize 2048 -validity 10000
+
+公版:
+dotnet publish -f net7.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSigningKeyStore={filename}.keystore -p:AndroidSigningKeyAlias={keyname} -p:AndroidSigningKeyPass={password} -p:AndroidSigningStorePass={password}
+
+此專案:
+dotnet publish -f net7.0-android -c Release -p:AndroidKeyStore=true -p:AndroidSigningKeyStore=Todo.keystore -p:AndroidSigningKeyAlias=Todo -p:AndroidSigningKeyPass=P@ssw0rd -p:AndroidSigningStorePass=P@ssw0rd
+
+// 要在有.slin的路徑下執行
+參考: https://learn.microsoft.com/zh-tw/dotnet/maui/android/deployment/publish-cli
+      https://ithelp.ithome.com.tw/articles/10308643
+
+檔案生成路徑: 專案路徑\bin\Release\net7.0-android\publish 

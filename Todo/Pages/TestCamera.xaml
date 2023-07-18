@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             x:Class="Todo.Pages.TestCamera"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             Title="TestCamera">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="RED" />
+    </ContentPage.Behaviors>
+
+    <ScrollView>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid  
+                Grid.Row="0"
+                HeightRequest="500" 
+                WidthRequest="500"
+                VerticalOptions="Center">
+
+                <cv:CameraView 
+                    x:Name="cameraView"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand" 
+                    CamerasLoaded="cameraView_CamerasLoaded" 
+                    BarCodeDetectionEnabled="True"
+                    BarcodeDetected="cameraView_BarcodeDetected"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Label x:Name="barcodeResult" FontSize="20" />
+            </Grid>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

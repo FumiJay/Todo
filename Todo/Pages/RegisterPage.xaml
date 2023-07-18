@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:Todo.Models"
+    xmlns:viewModels="clr-namespace:Todo.ViewModels"
+    x:DataType="viewModels:AuthViewModel"
+    x:Class="Todo.Pages.RegisterPage"
+    Title="RegisterPage">
+
+    <VerticalStackLayout>
+        <Label 
+            Text="Register"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Entry Placeholder="Email" Text="{Binding User.email}" />
+        <Entry Placeholder="Password" Text="{Binding User.passwd}" IsPassword="true" />
+        <Button Text="Register Account" Command="{Binding RegisterUserWithEmailAndPasswordCommand}"/>
+    </VerticalStackLayout>
+
+</ContentPage>
