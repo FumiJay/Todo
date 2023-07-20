@@ -14,6 +14,7 @@ namespace Todo.Services
     public class Authentication : IAuthentication
     {
         public bool isLogin = false;
+        public bool isBusy = true;
         public UserModel GetUser()
         {
             UserModel user = new UserModel
@@ -59,7 +60,6 @@ namespace Todo.Services
             GlobalData.ApiToken = string.Empty;
             GlobalData.LoginUserId = string.Empty;
             GlobalData.LoginUser = new UserModel();
-
         }
     }
 

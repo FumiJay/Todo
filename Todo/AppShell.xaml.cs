@@ -11,6 +11,8 @@ public partial class AppShell : Shell
     {
         //https://learn.microsoft.com/zh-tw/xamarin/xamarin-forms/app-fundamentals/shell/navigation
 
+        //https://github.com/jfversluis/MauiShellAppTemplate/blob/main/MauiShellApp/AppShell.xaml
+
         InitializeComponent();
 
         Routing.RegisterRoute(nameof(AddTodoPage), typeof(AddTodoPage));

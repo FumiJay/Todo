@@ -3,11 +3,13 @@ using CommunityToolkit.Mvvm.Input;
 using Firebase.Auth;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Todo.BasePages;
 using Todo.Models;
+using Todo.MyModels;
 using Todo.Services;
 
 namespace Todo.ViewModels
@@ -19,7 +21,7 @@ namespace Todo.ViewModels
         private UserModel _user = new UserModel();
         private readonly IAuthentication _authentication;
         private bool _isLogin = false;
-
+    
         public AuthenticationViewModel(IAuthentication authentication)
         {
             _authentication = authentication;
@@ -33,7 +35,7 @@ namespace Todo.ViewModels
         }
 
         [RelayCommand]
-        public async void IsLogin()
+        public async void  IsLogin()
         {
             _isLogin = await _authentication.IsLogin();
         }
@@ -41,7 +43,8 @@ namespace Todo.ViewModels
         [RelayCommand]
         public async void DoLogin()
         {
-            var result = await _authentication.DoLogin(new Models.UserModel
+            User.IsBusy = true;
+            var result = await _authentication.DoLogin(new UserModel
             {
                 accountid = User.accountid,
                 passwd = User.passwd,
@@ -56,11 +59,14 @@ namespace Todo.ViewModels
             {
                 await Shell.Current.DisplayAlert("Status: Login Failed", "Login failed", "Ok");
             }
+            
+            User.IsBusy = false;
         }
 
         [RelayCommand]
         public async void DoLogout()
         {
+            
             await _authentication.DoLogout();
             await Shell.Current.DisplayAlert("Status: Logout Success", "Logout Success", "Ok");
             await AppShell.Current.GoToAsync("///loading");

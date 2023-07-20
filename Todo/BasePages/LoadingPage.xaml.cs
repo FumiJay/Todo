@@ -21,9 +21,6 @@ public partial class LoadingPage : ContentPage
     }
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
-        //AppShell ap = new AppShell();
-        //AppShell.SetFlyoutBehavior(ap, (FlyoutBehavior)await OpenFlyout()); // 側邊滑動欄位 : 預設開啟 控制取消
-
         if (await isAuthenticated())
         {
             //await Navigation.PushAsync(new MainPage());
@@ -47,15 +44,21 @@ public partial class LoadingPage : ContentPage
     {
         await Task.Delay(500);
         var hasAuth = GlobalData.ApiToken.IsNullOrEmpty();
+
+        AppShell ap = new AppShell();
+        var obj = Application.Current.MainPage;
+        ap = obj as AppShell;
+        AppShell.SetFlyoutBehavior(ap, (FlyoutBehavior)Convert.ToInt32(!hasAuth)); // 側邊滑動欄位 : 預設開啟 控制取消
+
         return !(hasAuth == true);
     }
 
-    async Task<int> OpenFlyout()
-    {
-        await Task.Delay(100);
+    //async Task<int> OpenFlyout()
+    //{
+    //    await Task.Delay(100);
         
-        return (await isAuthenticated() == true ? 0 : 1);
-    }
+    //    return (await isAuthenticated() == true ? 0 : 1);
+    //}
 
     //async Task RemoveLoginStatus()
     //{

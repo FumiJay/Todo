@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Todo.MyModels;
 
 namespace Todo.Models
 {
-    public class UserModel
+    public class UserModel : ViewModelBase
     {
         public string ApiToken { get; set; }
         public string LoginUserId { get; set; }
@@ -32,5 +34,19 @@ namespace Todo.Models
         public string updator { get; set; }
         public bool? actived { get; set; }
         public string shiftid { get; set; }
+
+        private bool _isBusy = false;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                if (value == _isBusy)
+                    return;
+
+                _isBusy = value;
+                OnPropertyChanged("IsBusy");
+            }
+        }
     }
 }
