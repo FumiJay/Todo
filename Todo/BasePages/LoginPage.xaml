@@ -7,19 +7,35 @@
              x:Class="Todo.BasePages.LoginPage"
              Title="LoginPage">
 
-    <Grid x:Name="table" RowDefinitions="2*,*" Margin="0,10,0,0">
+    <ContentPage.Resources>
+        <viewModels:AuthenticationViewModel x:Key="VM_Authentication"/>
+    </ContentPage.Resources>
+
+    <Grid x:Name="table" RowDefinitions="2*,*" Margin="0,10,0,0" Padding="10">
+
+        <ActivityIndicator 
+            x:Name="Loading" 
+            IsRunning="{Binding User.IsBusy}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            HeightRequest="50"
+            WidthRequest="50"
+            Color="Lime" />
+        
         <VerticalStackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="Center">
-            <Frame BorderColor="Gray"
+            <Frame 
+               BorderColor="Gray"
                CornerRadius="10"
                HasShadow="True"
                Margin="0,-20,0,0"
                ZIndex="0"
                Padding="8">
                 <Frame.Shadow>
-                    <Shadow Brush="Black"
-                Offset="20,20"
-                Radius="10"
-                Opacity="0.9" />
+                    <Shadow 
+                        Brush="Black"
+                        Offset="20,20"
+                        Radius="10"
+                        Opacity="0.9" />
                 </Frame.Shadow>
                 <StackLayout Padding="10">
                     <VerticalStackLayout Padding="10" BackgroundColor="{StaticResource White}">
@@ -68,7 +84,6 @@
                             </Frame>
                         </VerticalStackLayout>
 
-
                         <Button Margin="0,20,0,0"
                                 x:Name="LoginButton"
                                 Command="{Binding DoLoginCommand}"
@@ -80,15 +95,6 @@
                                  Margin="0,20,0,0"
                                  HeightRequest="2"
                                  HorizontalOptions="Fill" />
-
-                        <ActivityIndicator 
-                            x:Name="Loading" 
-                            IsRunning="{Binding User.IsBusy}"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            HeightRequest="50"
-                            WidthRequest="50"
-                            Color="Lime" />
 
                         <!--<VerticalStackLayout Padding="10" Margin="0,10,0,0">
                             <Label HorizontalOptions="Center"

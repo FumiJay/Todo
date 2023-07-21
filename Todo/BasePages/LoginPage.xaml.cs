@@ -13,28 +13,34 @@ public partial class LoginPage : ContentPage
     public LoginPage()
     {
         InitializeComponent();
-        //_authentication = ia; 
-        VM_Authentication = new AuthenticationViewModel();
+        //VM_Authentication = new AuthenticationViewModel();
 
-        this.BindingContext = VM_Authentication;
-        //this.Appearing += OnAppearing;
-        //this.Disappearing += OnDisappearing;
+        //this.BindingContext = VM_Authentication;
+
+        // 手指點擊事件 : https://learn.microsoft.com/zh-tw/xamarin/xamarin-forms/app-fundamentals/gestures/tap
+        var tapGestureRecognizer = new TapGestureRecognizer();
+        tapGestureRecognizer.Tapped +=  async (s, e) => {
+            await KeyboardExtensions.HideKeyboardAsync(this.Password, CancellationToken.None);  //取消顯示鍵盤
+        };
+        table.GestureRecognizers.Add(tapGestureRecognizer);
+
+        #region 讀取動畫教學/範例
+        // 讀取條: https://learn.microsoft.com/zh-tw/dotnet/api/microsoft.maui.controls.progressbar?view=net-maui-7.0
+        // 轉圈圖: https://learn.microsoft.com/zh-tw/dotnet/maui/user-interface/controls/activityindicator
+        // 因為要強加UI到grid上 所以要擴充ContentPage 比較好呼叫畫面元件 可以共用loading function
+        //ActivityIndicator activityIndicator = new ActivityIndicator
+        //{
+        //    Color = Colors.Lime,
+        //    IsRunning = true,
+        //    HeightRequest = 50,
+        //    WidthRequest = 50,
+        //    IsVisible = true,
+        //};
+
+        //table.Children.Add(activityIndicator);
+
+        #endregion
     }
-
-    //private void LoginButton_Clicked(object sender, EventArgs e)
-    //{
-    //    // 因為要強加UI到grid上 所以要擴充ContentPage 比較好呼叫畫面元件 可以共用loading function
-    //    ActivityIndicator activityIndicator = new ActivityIndicator
-    //    {
-    //        Color = Colors.Lime,
-    //        IsRunning = true,
-    //        HeightRequest = 50,
-    //        WidthRequest = 50,
-    //        IsVisible = true,
-    //    };
-
-    //    table.Children.Add(activityIndicator);
-    //}
 
     //private void OnAppearing(object sender, EventArgs e)
     //{
@@ -48,10 +54,6 @@ public partial class LoginPage : ContentPage
 
     //private async void OnDisappearing(object sender, EventArgs e)
     //{
-    //    AppShell ap = new AppShell();
-    //    var obj = Application.Current.MainPage;
-    //    ap = obj as AppShell;
-    //    AppShell.SetFlyoutBehavior(ap, (FlyoutBehavior)1);
     //    await KeyboardExtensions.HideKeyboardAsync(this.Password, CancellationToken.None);  //取消顯示鍵盤
     //}
 

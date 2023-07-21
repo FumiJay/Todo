@@ -7,11 +7,10 @@ using Todo.ViewModels;
 
 public partial class LoadingPage : ContentPage
 {
-    private readonly IAuthentication _authentication;
-    public LoadingPage(IAuthentication auth)
+    //https://www.c-sharpcorner.com/blogs/building-a-login-flow-with-net-maui
+    public LoadingPage()
     {
         InitializeComponent();
-        _authentication = auth;
         //MainThread.BeginInvokeOnMainThread(async () =>
         //{
         //    await RemoveLoginStatus();

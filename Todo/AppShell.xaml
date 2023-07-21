@@ -7,7 +7,7 @@
     xmlns:page="clr-namespace:Todo.Pages"
     xmlns:Base="clr-namespace:Todo.BasePages"
     Shell.FlyoutBehavior="Disabled"
-    FlyoutWidth="150"
+    FlyoutWidth="200"
     FlyoutIcon="flyouticon.png">
 
     <ShellContent
@@ -28,7 +28,7 @@
         </Shell.MenuItemTemplate>
     </MenuItem>
 
-    <FlyoutItem x:Name="FlyMenu"  FlyoutDisplayOptions="AsMultipleItems">
+    <FlyoutItem x:Name="FlyMenu" FlyoutDisplayOptions="AsMultipleItems">
 
         <Tab Title="Main">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
