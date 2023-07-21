@@ -62,6 +62,6 @@
         </Shell.MenuItemTemplate>
     </MenuItem>
 
-    <MenuItem Text="Logout" StyleClass="MenuItemLayoutStyle" Clicked="LogoutButton_Clicked" />
+    <MenuItem x:Name="BtnLogout" Text="Logout" StyleClass="MenuItemLayoutStyle"/>
 
 </Shell>

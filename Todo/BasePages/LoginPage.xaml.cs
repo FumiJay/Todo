@@ -9,14 +9,14 @@ namespace Todo.BasePages;
 public partial class LoginPage : ContentPage
 {
     //private IAuthentication _authentication;
-    //private AuthenticationViewModel VM_Authentication { get; set; }
-    public LoginPage(AuthenticationViewModel vm)
+    private AuthenticationViewModel VM_Authentication { get; set; }
+    public LoginPage()
     {
         InitializeComponent();
         //_authentication = ia; 
-        //VM_Authentication = new AuthenticationViewModel(_authentication);
+        VM_Authentication = new AuthenticationViewModel();
 
-        this.BindingContext = vm;
+        this.BindingContext = VM_Authentication;
         //this.Appearing += OnAppearing;
         //this.Disappearing += OnDisappearing;
     }

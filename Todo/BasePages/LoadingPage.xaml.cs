@@ -8,11 +8,9 @@ using Todo.ViewModels;
 public partial class LoadingPage : ContentPage
 {
     private readonly IAuthentication _authentication;
-
     public LoadingPage(IAuthentication auth)
     {
         InitializeComponent();
-
         _authentication = auth;
         //MainThread.BeginInvokeOnMainThread(async () =>
         //{
@@ -45,10 +43,11 @@ public partial class LoadingPage : ContentPage
         await Task.Delay(500);
         var hasAuth = GlobalData.ApiToken.IsNullOrEmpty();
 
-        AppShell ap = new AppShell();
+        //AuthenticationViewModel vm = new AuthenticationViewModel(_authentication);
+        //AppShell ap = new AppShell();
         var obj = Application.Current.MainPage;
-        ap = obj as AppShell;
-        AppShell.SetFlyoutBehavior(ap, (FlyoutBehavior)Convert.ToInt32(!hasAuth)); // 側邊滑動欄位 : 預設開啟 控制取消
+        //ap = obj as AppShell;
+        AppShell.SetFlyoutBehavior(obj as AppShell, (FlyoutBehavior)Convert.ToInt32(!hasAuth)); // 側邊滑動欄位 : 預設開啟 控制取消
 
         return !(hasAuth == true);
     }

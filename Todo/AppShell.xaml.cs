@@ -7,8 +7,13 @@ namespace Todo;
 
 public partial class AppShell : Shell 
 {
+    private IAuthentication _authentication;
+    private AuthenticationViewModel VM_Authentication { get; set; }
     public AppShell()
     {
+        VM_Authentication = new AuthenticationViewModel();
+        this.BindingContext = VM_Authentication;
+
         //https://learn.microsoft.com/zh-tw/xamarin/xamarin-forms/app-fundamentals/shell/navigation
 
         //https://github.com/jfversluis/MauiShellAppTemplate/blob/main/MauiShellApp/AppShell.xaml
@@ -31,20 +36,29 @@ public partial class AppShell : Shell
 
         //this.Appearing += OnAppearing;
         //this.Disappearing += OnDisappearing;
+
+        this.BtnLogout.Clicked += async (sender, args) => 
+        {
+            if (await DisplayAlert("Are you sure?", "You will be logged out.", "Yes", "No"))
+            {
+                this.FlyoutIsPresented = false;  //側邊滑動欄位 : 關閉已開啟狀態
+
+                VM_Authentication.DoLogout();
+            }
+        };
     }
 
-    private async void LogoutButton_Clicked(object sender, EventArgs e)
-    {
-        if (await DisplayAlert("Are you sure?", "You will be logged out.", "Yes", "No"))
-        {
-            Authentication ser = new Authentication();
-            await ser.DoLogout();
-            //SecureStorage.RemoveAll();
-            await Shell.Current.DisplayAlert("Status: Logout Success", "Logout Success", "Ok");
-            this.FlyoutIsPresented = false; //側邊滑動欄位 : 關閉已開啟狀態
-            await AppShell.Current.GoToAsync("///loading");
-        }
-    }
+    //private async void LogoutButton_Clicked(object sender, EventArgs e)
+    //{
+    //    if (await DisplayAlert("Are you sure?", "You will be logged out.", "Yes", "No"))
+    //    {
+    //        this.FlyoutIsPresented = false; //側邊滑動欄位 : 關閉已開啟狀態
+
+    //        //SecureStorage.RemoveAll();
+    //        //await Shell.Current.DisplayAlert("Status: Logout Success", "Logout Success", "Ok");
+    //        //await AppShell.Current.GoToAsync("///loading");
+    //    }
+    //}
 
     //private void OnAppearing(object sender, EventArgs e)
     //{

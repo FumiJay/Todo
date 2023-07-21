@@ -19,12 +19,13 @@ namespace Todo.ViewModels
     {
         [ObservableProperty]
         private UserModel _user = new UserModel();
-        private readonly IAuthentication _authentication;
         private bool _isLogin = false;
-    
-        public AuthenticationViewModel(IAuthentication authentication)
+        //private readonly IAuthentication _authentication;
+        private Authentication _authentication = new  Authentication();
+
+        public AuthenticationViewModel()
         {
-            _authentication = authentication;
+            //_authentication = authentication;
         }
 
         [RelayCommand]
@@ -44,6 +45,7 @@ namespace Todo.ViewModels
         public async void DoLogin()
         {
             User.IsBusy = true;
+
             var result = await _authentication.DoLogin(new UserModel
             {
                 accountid = User.accountid,
@@ -66,7 +68,6 @@ namespace Todo.ViewModels
         [RelayCommand]
         public async void DoLogout()
         {
-            
             await _authentication.DoLogout();
             await Shell.Current.DisplayAlert("Status: Logout Success", "Logout Success", "Ok");
             await AppShell.Current.GoToAsync("///loading");
